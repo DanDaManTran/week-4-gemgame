@@ -1,0 +1,47 @@
+img{
+	width: 8rem;
+	margin: 2rem;
+}
+
+.page-header{
+	border-width: 4px;
+}
+
+.back{
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper{
+	position: absolute;
+	margin: auto;
+	width: 960px;
+	top: 20px;
+	left: 0;
+	width: 100%;
+	
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	color: lime;
+}
+
+.info{
+	width: 40rem;
+}
+
+span{
+	color: red;
+}
+
+h4{
+	font-size: 3rem;
+}
+
+#status{
+	color: lime;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystals Collector!</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<img class="back" src="assets/images/temple.jpg"/>
+	<div class="wrapper">
+		<h1 class="page-header container">Crystals Collector!</h1>
+		
+		<div class="row">
+			<!-- instrutions  -->
+			<div class="col-sm-4">
+				<div class="container info">
+					<p>You will be given a random number at the start of the game.</p>
+
+					<p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your totoal score.</p>
+
+					<p>You win the game by matching your total score to the random number, you lose the game if your total score goes over the random number.</p>
+
+					<p>The value of each crystal is hidden from you until you click on it</p>
+
+					<p>Each time when the game starts, the game will change the values of each crystal</p>
+				</div>
+			</div>
+
+			<div class="col-sm-4 scoreBoard">	
+				<!-- score board -->
+				<div class="container">
+					<h2><span id="status"></span></h2>
+					<h4>Wins: <span id="wins"></span></h4>
+					<h4>Loses: <span id="loses"></span></h4>
+				</div>
+
+				<!-- random number 19-120-->
+				<div class="container">
+					<h4>Random Number is: <span id="ranNum"></span></h4>
+				</div>
+
+				<div class="container">
+					<h4>Your Score: <span id="totalScore"></span></h4>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<!-- clickable gems 1-12 -->
+				<div class="container">
+					<div class="row">
+						<img id="pic0" src="assets/images/gem0.png"/>
+						<img id="pic1" src="assets/images/gem1.png"/>
+					</div>
+					<div class="row">
+						<img id="pic2" src="assets/images/gem2.png"/>
+						<img id="pic3" src="assets/images/gem3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		//ran*(y-x)+1) + x formula to get random number between y and x
+
+		var wins = 0;
+		var loses = 0;
+		var gemNum = [];
+		var ranNum = 0;
+		var totalScore = 0;
+		
+
+		function display(){
+			document.getElementById("ranNum").innerHTML = ranNum;
+			document.getElementById("totalScore").innerHTML = totalScore;
+			document.getElementById("loses").innerHTML = loses;
+			document.getElementById("wins").innerHTML = wins;
+		}
+
+		function restart(){
+			//random number giving for each gem in an array of 4 length 
+			gemNum = [];
+			for(var i =0;i<4;i++){
+				gemNum[i] = Math.floor(Math.random()*12+1);
+			}
+			//random number for the goal
+			ranNum = Math.floor(Math.random()*102+12);
+			//score keeper
+			totalScore = 0;
+			display();
+		}
+
+		restart();
+
+		$("document").ready(function(){
+			//clicking first gem
+			$("#pic0").click(function(){
+				//addpoints to total
+				totalScore+=gemNum[0];
+				//win lose or just update scores 
+				if(totalScore==ranNum){
+					wins+=1;
+					document.getElementById("status").innerHTML = "YOU WON";			
+					restart();
+				} else if (totalScore>ranNum){
+					loses+=1;
+					document.getElementById("status").innerHTML = "YOU LOST";	
+					restart();
+				} else{
+					display();
+				}
+			});
+
+			//clicking second gem
+			$("#pic1").click(function(){
+				//addpoints to total
+				totalScore+=gemNum[1];
+				//win lose or just update scores 
+				if(totalScore==ranNum){
+					wins+=1;
+					document.getElementById("status").innerHTML = "YOU WON";			
+					restart();
+				} else if (totalScore>ranNum){
+					loses+=1;
+					document.getElementById("status").innerHTML = "YOU LOST";	
+					restart();
+				} else{
+					display();
+				}
+			});
+
+			//clicking third gem
+			$("#pic2").click(function(){
+				//addpoints to total
+				totalScore+=gemNum[2];
+				//win lose or just update scores 
+				if(totalScore==ranNum){
+					wins+=1;
+					document.getElementById("status").innerHTML = "YOU WON";			
+					restart();
+				} else if (totalScore>ranNum){
+					loses+=1;
+					document.getElementById("status").innerHTML = "YOU LOST";	
+					restart();
+				} else{
+					display();
+				}
+			});
+
+			//clicking first gem
+			$("#pic3").click(function(){
+				//addpoints to total
+				totalScore+=gemNum[3];
+				//win lose or just update scores 
+				if(totalScore==ranNum){
+					wins+=1;
+					document.getElementById("status").innerHTML = "YOU WON";			
+					restart();
+				} else if (totalScore>ranNum){
+					loses+=1;
+					document.getElementById("status").innerHTML = "YOU LOST";	
+					restart();
+				} else{
+					display();
+				}
+			});
+
+		});
+
+	</script>
+	
+</body>
+</html>
