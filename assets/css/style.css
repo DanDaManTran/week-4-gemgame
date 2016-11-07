@@ -1,12 +1,15 @@
-img{
+/*resizing the gems*/
+.pic{
 	width: 8rem;
 	margin: 2rem;
 }
 
+/*adding a line for the title*/
 .page-header{
 	border-width: 4px;
 }
 
+/*making the picture a background picture*/
 .back{
 	position: relative;
 	width: 100%;
@@ -14,6 +17,7 @@ img{
 	padding: 0;
 }
 
+/*haveing a standard wrapper*/
 .wrapper{
 	position: absolute;
 	margin: auto;
@@ -21,27 +25,26 @@ img{
 	top: 20px;
 	left: 0;
 	width: 100%;
-	
 }
 
+/*so there isn't any margin or padding on the whole body*/
 body{
 	margin: 0;
 	padding: 0;
 	color: lime;
 }
 
+/*keeping the paragraphs in a certain size so it doesnt over lap with the status*/
 .info{
 	width: 40rem;
 }
 
+/*changing it red so it is easier to read the statuses*/
 span{
 	color: red;
 }
 
+/*increasing the font size*/
 h4{
 	font-size: 3rem;
-}
-
-#status{
-	color: lime;
 }

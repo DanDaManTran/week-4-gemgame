@@ -3,11 +3,12 @@
 <head>
 	<title>Crystals Collector!</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
+<!-- <body background="assets/images/temple.jpg"> when i try background image it gets really dark-->
 	<img class="back" src="assets/images/temple.jpg"/>
 	<div class="wrapper">
 		<h1 class="page-header container">Crystals Collector!</h1>
@@ -31,7 +32,7 @@
 			<div class="col-sm-4 scoreBoard">	
 				<!-- score board -->
 				<div class="container">
-					<h2><span id="status"></span></h2>
+					<h2><span></span></h2>
 					<h4>Wins: <span id="wins"></span></h4>
 					<h4>Loses: <span id="loses"></span></h4>
 				</div>
@@ -50,12 +51,12 @@
 				<!-- clickable gems 1-12 -->
 				<div class="container">
 					<div class="row">
-						<img id="pic0" src="assets/images/gem0.png"/>
-						<img id="pic1" src="assets/images/gem1.png"/>
+						<img class="pic" src="assets/images/gem0.png" data-value="0"/>
+						<img class="pic" src="assets/images/gem1.png" data-value="1"/>
 					</div>
 					<div class="row">
-						<img id="pic2" src="assets/images/gem2.png"/>
-						<img id="pic3" src="assets/images/gem3.png"/>
+						<img class="pic" src="assets/images/gem2.png" data-value="2"/>
+						<img class="pic" src="assets/images/gem3.png" data-value="3"/>
 					</div>
 				</div>
 			</div>
@@ -74,10 +75,10 @@
 		
 
 		function display(){
-			document.getElementById("ranNum").innerHTML = ranNum;
-			document.getElementById("totalScore").innerHTML = totalScore;
-			document.getElementById("loses").innerHTML = loses;
-			document.getElementById("wins").innerHTML = wins;
+			$("#ranNum").html(ranNum);
+			$("#totalScore").html(totalScore);
+			$("#loses").html(loses);
+			$("#wins").html(wins);
 		}
 
 		function restart(){
@@ -96,78 +97,26 @@
 		restart();
 
 		$("document").ready(function(){
-			//clicking first gem
-			$("#pic0").click(function(){
+
+			$(".pic").on("click",function(){
+				//clicking on any gem to get the value so we know which number to add from the array
+				var num= $(this).data('value');
 				//addpoints to total
-				totalScore+=gemNum[0];
+				console.log(num);
+				totalScore+=gemNum[num];
 				//win lose or just update scores 
 				if(totalScore==ranNum){
 					wins+=1;
-					document.getElementById("status").innerHTML = "YOU WON";			
+					$("#status").html("YOU WON");			
 					restart();
 				} else if (totalScore>ranNum){
 					loses+=1;
-					document.getElementById("status").innerHTML = "YOU LOST";	
+					$("#status").html("YOU LOST");	
 					restart();
 				} else{
 					display();
 				}
 			});
-
-			//clicking second gem
-			$("#pic1").click(function(){
-				//addpoints to total
-				totalScore+=gemNum[1];
-				//win lose or just update scores 
-				if(totalScore==ranNum){
-					wins+=1;
-					document.getElementById("status").innerHTML = "YOU WON";			
-					restart();
-				} else if (totalScore>ranNum){
-					loses+=1;
-					document.getElementById("status").innerHTML = "YOU LOST";	
-					restart();
-				} else{
-					display();
-				}
-			});
-
-			//clicking third gem
-			$("#pic2").click(function(){
-				//addpoints to total
-				totalScore+=gemNum[2];
-				//win lose or just update scores 
-				if(totalScore==ranNum){
-					wins+=1;
-					document.getElementById("status").innerHTML = "YOU WON";			
-					restart();
-				} else if (totalScore>ranNum){
-					loses+=1;
-					document.getElementById("status").innerHTML = "YOU LOST";	
-					restart();
-				} else{
-					display();
-				}
-			});
-
-			//clicking first gem
-			$("#pic3").click(function(){
-				//addpoints to total
-				totalScore+=gemNum[3];
-				//win lose or just update scores 
-				if(totalScore==ranNum){
-					wins+=1;
-					document.getElementById("status").innerHTML = "YOU WON";			
-					restart();
-				} else if (totalScore>ranNum){
-					loses+=1;
-					document.getElementById("status").innerHTML = "YOU LOST";	
-					restart();
-				} else{
-					display();
-				}
-			});
-
 		});
 
 	</script>
